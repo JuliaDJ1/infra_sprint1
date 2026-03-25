@@ -1,0 +1,9 @@
+IP: 158.160.244.30;
+
+name_taski: https://158.160.244.30;
+
+name_kittygram: https://158.160.244.30;
+
+login: ubuntu;
+
+password: 123;
