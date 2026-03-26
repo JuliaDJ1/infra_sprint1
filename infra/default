@@ -1,5 +1,6 @@
 # ==================== TASKI ====================
 server {
+    listen 80;
     server_name oldtaski.servebeer.com;
 
     location / {
@@ -13,17 +14,11 @@ server {
     location /static/ {
         alias /var/www/taski/static/;
     }
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/oldtaski.servebeer.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/oldtaski.servebeer.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
 }
 
 # ==================== KITTYGRAM ====================
 server {
+    listen 80;
     server_name kittygramsite.servebeer.com;
 
     root /var/www/kittygram;
@@ -56,36 +51,4 @@ server {
     location /media/ {
         alias /var/www/kittygram/media/;
     }
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/oldtaski.servebeer.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/oldtaski.servebeer.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-}
-
-server {
-    if ($host = oldtaski.servebeer.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    listen 80;
-    server_name oldtaski.servebeer.com;
-    return 404; # managed by Certbot
-
-
-}
-server {
-    if ($host = kittygramsite.servebeer.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-
-    listen 80;
-    server_name kittygramsite.servebeer.com;
-    return 404; # managed by Certbot
-
-
 }
